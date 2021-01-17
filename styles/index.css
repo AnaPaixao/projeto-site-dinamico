@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    background: rgb(156,136,172);
+    background: linear-gradient(180deg, rgba(156,136,172,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+/*MAIN*/
+main#container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/*MAIN UL*/
+main ul {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+main ul li {
+    margin-left: 10px;
+}
+
+main ul li:nth-child(2) {
+    border-left: 1px black solid;
+    padding-left: 10px;
+}
+
+main ul li a {
+    font-family: 'Poppins', sans-serif;
+    color: #46144F;
+}
+
+main ul li a:hover {
+    color: #000;
+}
+
+/*MAIN INTRO-TEXT*/
+main .intro-text {
+    flex-basis: 50%;
+    align-self: center;
+}
+
+main .intro-text h1 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 96px;
+}
+
+main .intro-text h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    width: 300px;
+}
+
+/*MAIN IMG*/
+main .img img {
+    width: 450px;
+    height: 450px;
+}
+
+/*MAIN FORM*/
+main form {
+    flex-basis: 100%;
+}
+
+main form select, input {
+    width: 200px;
+    height: 55px;
+    padding: 15px;
+    color: #FFF;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600px;
+    font-size: 15px;
+    line-height: 26px;
+    outline: 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #46144F;
+} 
+
+main form button {
+    width: 150px;
+    height: 60px;
+    color: #FFF;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600px;
+    font-size: 15px;
+    line-height: 26px;
+    outline: 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #46144F;
+    /* box-shadow: 2px 2px black; */
+}
+
+main form button:hover {
+    background-color: #6b3076;
+}
+
+/*MAIN ICON*/
+.icon {
+    color: rgb(213, 213, 213);
+    justify-content: flex-end;
+}
+
+.icon a {
+    color: rgb(214, 214, 214);
+}
