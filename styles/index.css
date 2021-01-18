@@ -1,15 +1,21 @@
 * {
     margin: 0;
+    padding: 0;
     list-style: none;
-    box-sizing: border-box;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     background: rgb(156,136,172);
     background: linear-gradient(180deg, rgba(156,136,172,1) 0%, rgba(255,255,255,1) 100%);
 }
+
+h1 {
+    font-family: 'Archivo', sans-serif;
+}
+
 
 /*MAIN*/
 main#container {
@@ -53,7 +59,6 @@ main .intro-text {
 }
 
 main .intro-text h1 {
-    font-family: 'Archivo', sans-serif;
     font-size: 96px;
 }
 

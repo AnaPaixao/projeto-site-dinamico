@@ -1,0 +1,45 @@
+body {
+    background: #DAD9E6;
+}
+
+header {
+    min-width: 100vh;
+    height: 180px;
+    background: #9C88AC;
+}
+
+.header-content {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header-content h1 {
+    width: 400px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.header-content p {
+    font-family: 'Poppins', sans-serif;
+    width: 250px;
+    margin-top: 5px;
+    font-size: 14px;
+    
+}
+
+.container-form h2 {
+    font-family: 'Archivo', sans-serif;
+    margin-top: 20px;
+    text-align: center;
+    color: #32264D;
+}
+
+.container-form h2:after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: #000;
+    margin: 5px auto;
+}
