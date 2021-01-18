@@ -8,8 +8,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50vw;
-    min-height: 90vh;
+    width: 40vw;
+    min-height: 85vh;
     margin: 0 auto;
     padding: 40px;
     background: #9C88AC;
@@ -19,7 +19,7 @@ main {
 main.form-container h1 {
     color: #32264D;
     align-self: flex-start;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 main.form-container h1:after {
@@ -35,7 +35,7 @@ main.form-container h2 {
     font-family: 'Poppins', sans-serif;
     width: 250px;
     margin-top: 5px;
-    margin-left: 50px;
+    margin-left: 10px;
     font-size: 14px;
     align-self: flex-start;
     font-weight: normal;
@@ -55,7 +55,7 @@ main.form-container form label {
 }
 
 main.form-container form input {
-    width: 500px;
+    width: 450px;
     height: 50px;
     background: #FFF;
     border-radius: 8px;
@@ -64,7 +64,7 @@ main.form-container form input {
 }
 
 main.form-container form button {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 main.form-container p {
