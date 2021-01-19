@@ -189,7 +189,7 @@ if (!empty($dados)) {
         </div>
     </header>
     <div class="container-form">
-        <h2>Seus dados</h2>
+        <!-- <h2>Seus dados</h2> -->
     
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="container w-75 mb-4">
     <h1 class="my-4 h4 text-center">Cadastro de profissional</h1>

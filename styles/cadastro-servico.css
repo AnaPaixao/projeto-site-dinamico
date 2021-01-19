@@ -1,15 +1,16 @@
 body {
+    display: flex;
+    flex-direction: column;
     background: #DAD9E6;
 }
 
 header {
-    max-width: 100vw;
-    height: 180px;
+    width: 100%;
     background: #9C88AC;
 }
 
 .header-content {
-    width: 900px;
+    width: 77%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -23,9 +24,16 @@ header {
 .header-content p {
     font-family: 'Poppins', sans-serif;
     width: 250px;
-    margin-top: 5px;
+    margin-top: 16px;
     font-size: 14px;
     
+}
+
+.container-form {
+    width: 75%;
+    margin: 10px auto;
+    background: #FFF;
+    border-radius: 10px;
 }
 
 .container-form h2 {
@@ -33,126 +41,48 @@ header {
     margin-top: 20px;
     text-align: center;
     color: #32264D;
+    font-size: 22.5px;
 }
 
 .container-form h2:after {
     content: "";
     display: block;
-    width: 70px;
+    width: 60px;
     height: 1px;
     background: #000;
     margin: 5px auto;
 }
 
+.container-form input {
+    margin: 5px;
+}
+
+
 @media (max-width: 540px){
 
-    body {
+    .header-content {
         display: flex;
         flex-direction: column;
-    }
-
-    header {
-        height: 140px;
-    }
-
-    .header-content {
-        width: 100%;
-        margin: 0;
-        padding: 20px 10px 20px 10px;
+        align-items: center;
         text-align: center;
+        padding: 20px 15px 15px 15px;
     }
 
     .header-content h1 {
-        width: 355px;
+        width: 290px;
         font-size: 20px;
     }
 
     .header-content p {
-        width: 300px;
-        font-size: 15px;
-        margin: 0 auto;
+        margin-top: 5px;
     }
 
     .container-form h2 {
-        margin-top: 15px;
-        font-size: 25px;
-    }
-    
-
-}
-
-@media (max-width: 414px) {
-
-    body {
-        display: flex;
-        flex-direction: column;
+        margin-top: 20px;
+        font-size: 22px;
     }
 
-    header {
-        height: 150px;
+    .container-form {
+        width: 90%;
     }
-
-    .header-content {
-        width: 100%;
-        margin: 0;
-        padding: 20px 10px 10px 10px;
-    }
-
-    .header-content h1 {
-        width: 390px;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    .container-form h2 {
-        margin-top: 15px;
-        font-size: 25px;
-    }
-    
-
-}
-
-@media (max-width: 375px){
-
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-
-    header {
-        height: 150px;
-    }
-
-    .header-content {
-        width: 100%;
-        margin: 0;
-        padding: 20px 10px 10px 10px;
-    }
-
-    .header-content h1 {
-        width: 350px;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    .container-form h2 {
-        margin-top: 15px;
-        font-size: 25px;
-    }
-    
-
-}
-
-@media (width: 320px){
-
-    header {
-        height: 160px;
-    }
-
-    .header-content h1 {
-        width: 300px;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
 }

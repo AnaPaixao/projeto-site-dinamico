@@ -79,7 +79,7 @@ main form {
     flex-basis: 100%;
 }
 
-main form select, input {
+main form select, main form input {
     width: 200px;
     height: 55px;
     padding: 15px;
@@ -131,7 +131,7 @@ main form button:hover {
         text-align: center;
     }
 
-    main form select, input, button {
+    main form select, main form input, main form button {
         margin: 10px;
     }
 
@@ -159,7 +159,7 @@ main form button:hover {
         height: 450px;
     }
 
-    main form select, input, button {
+    main form select, main form input, main form button {
         margin: 0;
     }
 }
@@ -194,7 +194,7 @@ main form button:hover {
         text-align: center;
     }
 
-    main form select, input {
+    main form select, main form input {
         padding: 15px;
         font-size: 20px;
         margin-top: 20px;
@@ -250,7 +250,7 @@ main form button:hover {
         text-align: center;
     }
 
-    main form select, input {
+    main form select, main form input {
         padding: 15px;
         font-size: 20px;
         margin-top: 40px;
@@ -294,7 +294,7 @@ main form button:hover {
         text-align: center;
     }
 
-    main form select, input {
+    main form select, main form input {
         padding: 15px;
         font-size: 20px;
         margin-top: 20px;
@@ -322,7 +322,7 @@ main form button:hover {
         margin-top: 5px;
     }
 
-    main form select, input {
+    main form select, main form input {
         margin-top: 10px;
     } 
 
