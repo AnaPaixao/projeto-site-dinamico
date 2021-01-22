@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,7 +18,17 @@
 </head>
 
 <body>
-    <main id="container">
+	
+	<?php 
+	if(isset($_SESSION['msg'])):
+		echo "<div class='alert'>{$_SESSION['msg']}</p>";
+		unset($_SESSION['msg']);
+	else:
+		echo "";
+	endif;
+	?>
+    
+	<main id="container">
 
         <ul>
             <li><a href="./cadastro-servico.php">Cadastre-se</a></li>

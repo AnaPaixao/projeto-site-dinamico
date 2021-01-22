@@ -141,7 +141,7 @@ if (!empty($dados)) {
                 $stmt->bindParam(":numero", $numero);
                 if($stmt->execute()){
                     $_SESSION['msg'] = "Usuário inserido com sucesso!";
-                    header("Location: http://localhost/projeto");
+                    header("Location: http://localhost/projeto-site-dinamico/");
                 }
             }
         }
