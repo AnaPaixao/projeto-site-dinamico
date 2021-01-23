@@ -1,4 +1,28 @@
 <?php
+session_start();
+
+
+/** [VERIFICAÇÃO DE LOGIN] 
+ *  Verifica se o usuário já está logado, caso esteja redireciona para a página
+ *  de edição:
+ */
+if (isset($_SESSION['usuario'])) {
+    header("Location: http://localhost/projeto-site-dinamico/editar-perfil.php");
+    exit;
+}
+
+/** [FIM VERIFICAÇÃO DE LOGIN]  */
+/** [MENSAGEM DE LOGIN] 
+ *  Quando um usuário não logado tenta acessar a página editar-perfil.php ele é 
+ *  redirecionado para cá, esse trecho faz a mensagem aparecer.
+ */
+if (isset($_SESSION['msg_perfil'])) {
+    $erros['faca_login'] = $_SESSION['msg_perfil'];
+    unset($_SESSION['msg_perfil']);
+}
+
+/** [FIM MENSAGEM DE LOGIN]  */
+// Chamando a Classe de CONEXAO COM BANCO DE DADOS:
 require __DIR__ . '/DB/Connect.php';
 /** @var $db PDO */
 $db = Connect::getInstance();
@@ -6,13 +30,15 @@ $db = Connect::getInstance();
 // Filtrando dados informados pelo usuario:
 $login = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED);
 
-
+// Essa variável serve para mostrar uma mensagem no front end.
 $erro = false;
 
 
 // Para continuar mostrando o e-mail após uma tentativa de logar:
 $email = $login['email'];
 
+
+// Validações
 if (!empty($_POST)) {
 
     if (in_array("", $login)) {
@@ -30,29 +56,48 @@ if (!empty($_POST)) {
             $stmt = $db->prepare("SELECT senha FROM profissional WHERE email = :email");
             $stmt->bindParam(":email", $login['email']);
             $stmt->execute();
-            if ($stmt->rowCount() != 0){ 
+            if ($stmt->rowCount() != 0) {
                 $senha = $stmt->fetch()->senha;
-                
-                if(!password_verify($login['password'], $senha)){
+
+                if (!password_verify($login['password'], $senha)) {
                     $erro = true;
                 }
-                
             } else {
                 $erro = true;
             }
         }
-        
-        if(empty($erros) && !$erro){
-                    
+
+        if (empty($erros) && !$erro) {
+
             $stmt = $db->prepare("SELECT * FROM profissional WHERE email = :email and senha = :senha");
             $stmt->bindParam(":email", $login['email']);
             $stmt->bindParam(":senha", $senha);
             $stmt->execute();
-            
-            if($stmt->rowCount() == 0){
+
+            if ($stmt->rowCount() == 0) {
                 $erro = true;
             } else {
-                var_dump($stmt->fetch());
+                $_SESSION['usuario'] = $stmt->fetch();
+                $nomes = explode(" ", $_SESSION['usuario']->nome);
+                $_SESSION['usuario']->nome = $nomes[0];
+                $_SESSION['usuario']->sobrenome = $nomes[1];
+
+                try {
+                    $id = $_SESSION['usuario']->id;
+                    $sql = "SELECT ddd, numero FROM telefone WHERE profissional_id = {$id}";
+                    $query = $db->query($sql);
+
+                    $telefone = $query->fetch();
+
+                    $_SESSION['usuario']->telefone = $telefone;
+                    $_SESSION['usuario']->telefone->numero = str_replace("-", "", $_SESSION['usuario']->telefone->numero);
+                    $_SESSION['usuario']->cep = str_replace("-", "", $_SESSION['usuario']->cep);
+                } catch (Exception $ex) {
+                    die("Erro: {$ex}");
+                }
+
+
+                header("Location: http://localhost/projeto-site-dinamico/editar-perfil.php");
             }
         }
     }
@@ -87,10 +132,11 @@ if (!empty($_POST)) {
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password">
 
-                <?= ($erro == true) ? "<p class='error-login'><strong>Usuário ou senha inválido</strong></p>" : "" ?>
-                <?= isset($erros['email_invalido']) ? "<p class='error-login'><strong>O email inserido não é válido.</strong></p>" : "" ?>
-                <?= isset($erros['email_vazio']) ? "<p class='error-login'><strong>Você deve preencher o email!</strong></p>" : "" ?>
-                <?= isset($erros['senha_vazio']) ? "<p class='error-login'><strong>Você deve preencher a senha!</strong></p>" : "" ?>
+<?= ($erro == true) ? "<p class='error-login'><strong>Usuário ou senha inválido</strong></p>" : "" ?>
+<?= isset($erros['email_invalido']) ? "<p class='error-login'><strong>O email inserido não é válido.</strong></p>" : "" ?>
+<?= isset($erros['email_vazio']) ? "<p class='error-login'><strong>Você deve preencher o email!</strong></p>" : "" ?>
+<?= isset($erros['senha_vazio']) ? "<p class='error-login'><strong>Você deve preencher a senha!</strong></p>" : "" ?>
+<?= isset($erros['faca_login']) ? "<p class='error-login'><strong>{$erros['faca_login']}</strong></p>" : "" ?>
 
                 <button>Log in</button>
             </form>
