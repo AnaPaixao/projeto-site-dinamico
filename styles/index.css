@@ -125,49 +125,121 @@ main form button:hover {
 
 /*MEDIA QUERIES*/
 
-@media (max-width: 1030px) {
+@media (max-width: 1000px) {
 
-    main form {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main#container {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    main .intro-text {
         text-align: center;
     }
 
-    main form select, main form input, main form button {
-        margin: 10px;
+    main .intro-text h1 {
+        font-size: 70px;
+        margin-top: 20px;
+    }
+
+    main .intro-text h2 {
+        font-size: 20px;
+        width: 300px;
+        margin: 0;
+    }
+
+    main .img {
+        text-align: center;
     }
 
     main .img img {
-        width: 650px;
-        height: 650px;
+        width: 400px;
+        height: 400px;
     }
 
+    
 }
 
 @media (max-width: 780px) {
 
     body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
     main#container {
-        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
     }
 
+    main .intro-text {
+        text-align: center;
+    }
+
+    main .intro-text h1 {
+        font-size: 70px;
+        margin-top: 20px;
+    }
+
+    main .intro-text h2 {
+        font-size: 20px;
+        width: 300px;
+        margin: 0;
+    }
+
+    main .img {
+        text-align: center;
+    }
+
+
     main .img img {
-        width: 450px;
-        height: 450px;
+        width: 400px;
+        height: 400px;
+    }
+
+    main form {
+        text-align: center;
     }
 
     main form select, main form input, main form button {
-        margin: 0;
+        margin-top: 10px;
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
 
     main#container {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        padding: 5px;
+    }
+
+    main ul {
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
+    main ul li {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+    }
+
+    main ul li:nth-child(2) {
+        border: none;
+        padding: 0;
     }
 
     main .intro-text {
@@ -183,6 +255,10 @@ main form button:hover {
         font-size: 20px;
         width: 250px;
         margin-top: 10px;
+    }
+
+    main .img {
+        text-align: center;
     }
 
     main .img img {
@@ -214,16 +290,24 @@ main form button:hover {
 @media (max-width: 414px) {
 
     main#container {
-        justify-content: center;
+        padding: 5px;
+    }
+
+    main ul {
+        justify-content: space-around;
+        align-items: center;
+
     }
 
     main ul li {
-        margin-right: 20px;
-        margin-left: 20px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
     }
 
     main ul li:nth-child(2) {
-        padding-left: 40px;
+        border: none;
+        padding: 0;
     }
 
     .img {
@@ -269,13 +353,25 @@ main form button:hover {
 
 @media (max-width: 380px) {
 
+    main#container {
+        padding: 5px;
+    }
+
+    main ul {
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
     main ul li {
-        margin-right: 20px;
-        margin-left: 10px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
     }
 
     main ul li:nth-child(2) {
-        padding-left: 20px;
+        border: none;
+        padding: 0;
     }
 
     main .intro-text h1 {
@@ -312,9 +408,26 @@ main form button:hover {
 }
 
 @media (max-width: 320px) {
+
+    main#container {
+        padding: 5px;
+    }
+
+    main ul {
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
     main ul li {
-        margin-right: 10px;
-        margin-left: 5px;
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+    }
+
+    main ul li:nth-child(2) {
+        border: none;
+        padding: 0;
     }
 
     main .intro-text h1 {
