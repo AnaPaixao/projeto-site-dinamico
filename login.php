@@ -35,7 +35,9 @@ $erro = false;
 
 
 // Para continuar mostrando o e-mail após uma tentativa de logar:
-$email = $login['email'];
+if(isset($login['email'])){
+    $email = $login['email'];
+}
 
 
 // Validações
