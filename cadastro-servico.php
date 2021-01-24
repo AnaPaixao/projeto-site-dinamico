@@ -113,7 +113,7 @@ if (!empty($dados)) {
             
             // PODE CADASTRAR
            
-            $dados['nome'] = $dados['nome'] . ' ' . $dados['sobrenome'];
+            $dados['nome'] = mb_convert_case(trim($dados['nome']) . ' ' . trim($dados['sobrenome']), MB_CASE_TITLE);
 
             $stmt = $db->prepare("INSERT INTO profissional(nome, email, senha, profissao_id, cep, municipio, bairro) VALUES (:nome, :email, :senha,:profissao_id, :cep, :municipio, :bairro)");
             $stmt->bindParam(":nome", $dados['nome']);
