@@ -125,7 +125,7 @@ main form button:hover {
 
 /*MEDIA QUERIES*/
 
-@media (max-width: 1000px) {
+@media (max-width: 1125px) {
 
     body {
         display: flex;
@@ -164,7 +164,9 @@ main form button:hover {
         height: 400px;
     }
 
-    
+    main form.search-container {
+        text-align: center;
+    }
 }
 
 @media (max-width: 780px) {
@@ -432,6 +434,49 @@ main form button:hover {
 
     main .intro-text h1 {
         font-size: 60px;
+        margin-top: 5px;
+    }
+
+    main form select, main form input {
+        margin-top: 10px;
+    } 
+
+    main form button {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 280px) {
+
+    main#container {
+        margin: auto;
+        text-align: center;
+    }
+
+    main ul {
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
+    main ul li {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+    }
+
+    main ul li:nth-child(2) {
+        border: none;
+        padding: 0;
+    }
+
+    main .intro-text h1 {
+        font-size: 55px;
+        margin-top: 5px;
+    }
+
+    main .intro-text h2 {
+        font-size: 14px;
         margin-top: 5px;
     }
 
