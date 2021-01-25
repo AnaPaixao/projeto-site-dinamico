@@ -142,6 +142,7 @@ if (!empty($dados)) {
                 if($stmt->execute()){
                     $_SESSION['msg'] = "Usuário inserido com sucesso!";
                     header("Location: http://localhost/projeto-site-dinamico/");
+                    exit;
                 }
             }
         }

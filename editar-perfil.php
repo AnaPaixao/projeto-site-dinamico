@@ -341,9 +341,11 @@ if (!empty($_SESSION['usuario']->especialidade_id)) {
         </div>
 
         <div class="botoes">
-            <button type="submit" class="btn btn-primary mt-4">Atualizar</button>
+            <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
         </div>
     </form>
+
+    <a href="./logout.php" class="mt-4 btn btn-block btn-danger">Sair</a>
 </div>
 </body>
 

@@ -31,8 +31,8 @@ session_start();
 	<main id="container">
 
         <ul>
-            <li><a href="./cadastro-servico.php">Cadastre-se</a></li>
-            <li><a href="./login.php">Login</a></li>
+            <?= isset($_SESSION['usuario']) ? "" : "<li><a href='./cadastro-servico.php'>Cadastre-se</a></li>"?>
+            <li><a href="./login.php"><?= !isset($_SESSION['usuario']) ? "Login" : "Minha conta" ?></a></li>
         </ul>
 
         <div class="intro-text">
@@ -46,7 +46,7 @@ session_start();
 
         
 
-        <form action="" class="search-container">
+        <form action="consultar-profissional.php" class="search-container">
 
             <select name="occupation" id="occupation">
                 <option value="">Profissão</option>
