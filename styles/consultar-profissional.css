@@ -1,6 +1,7 @@
 header {
     background: #9C88AC;
     padding: 20px;
+    width: 100%;
 }
 
 .header-content {
@@ -44,21 +45,28 @@ form select {
     border-radius: 8px;
     border: none;
     outline: none;
+    padding: 10px;
 }
 
 form input {
     width: 200px;
     height: 40px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
     background: #FFF;
     color: #000;
+    padding: 10px;
 }
 
 .card {
     font-family: 'Poppins', sans-serif;
     display: flex;
-    width: 700px;
-    height: 150px;
+    align-items: center;
+    width: 730px;
+    height: 200px;
     margin: 0 auto;
+    padding: 10px;
     background: rgb(255, 255, 255, 50%);
     border-radius: 10px;
 }
@@ -93,6 +101,13 @@ form input {
 .card .professional p:nth-child(3) {
     flex-basis: 100%;
     align-self: stretch;
+    text-align: justify;
+}
+
+.card .social-media {
+    display: flex;
+    width: 150px;
+    justify-content: space-around;
 }
 
 .card .net{
@@ -103,11 +118,11 @@ form input {
     text-align: center;
 }
 
-.card div:nth-child(3) {
+.card .social-media div:nth-child(1) {
     background-color: rgb(0, 205, 45, 50%);
 }
 
-.card div:nth-child(4) {
+.card .social-media div:nth-child(2) {
     background-color: rgb(246, 0, 0, 50%);
 }
 
@@ -116,5 +131,225 @@ form input {
     height: 30px;
     margin: 10px;
 }
+
+@media (max-width: 1000px) {
+
+    header {
+        padding: 10px;
+    }
+
+    .header-content {
+        width: 350px;
+    }
+
+    .header-content h1 {
+        width: 350px;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px;
+        width: 90vw;
+        margin: 20px auto;
+    }
+
+    form select, form input {
+        width: 400px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+        height: 400px;
+    }
+
+    .card .img {
+        display: flex;
+        width: 150px;
+    }
+
+    .card .professional {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+        width: 200px;
+    }
+
+    .card .professional p {
+        flex-basis: 100%;
+    }
+
+    .card .professional p:nth-child(3) {
+        display: none;
+    }
+
+    .card .social-media {
+        display: flex;
+        width: 150px;
+        justify-content: space-around;
+    }
+
+    .card .net{
+        width: 50px;
+        height: 50px;
+        margin: 0; 
+    }
+    
+
+}
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 10px;
+    }
+
+    .header-content {
+        width: 290px;
+    }
+
+    .header-content h1 {
+        width: 280px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px;
+        width: 90vw;
+        margin: 20px auto;
+    }
+
+    form select, form input {
+        width: 300px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+        height: 400px;
+    }
+
+    .card .img {
+        display: flex;
+        width: 150px;
+    }
+
+    .card .professional {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+        width: 200px;
+    }
+
+    .card .professional p {
+        flex-basis: 100%;
+    }
+
+    .card .professional p:nth-child(3) {
+        display: none;
+    }
+
+    .card .social-media {
+        display: flex;
+        width: 150px;
+        justify-content: space-around;
+    }
+
+    .card .net{
+        width: 50px;
+        height: 50px;
+        margin: 0; 
+    }
+    
+
+}
+
+@media (max-width: 414px) {
+
+    header {
+        padding: 10px;
+    }
+
+    .header-content {
+        width: 290px;
+    }
+
+    .header-content h1 {
+        width: 280px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px;
+        width: 90vw;
+        margin: 20px auto;
+    }
+
+    form select, form input {
+        width: 250px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 250px;
+        height: 400px;
+    }
+
+    .card .img {
+        display: flex;
+        width: 150px;
+    }
+
+    .card .professional {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+        width: 200px;
+    }
+
+    .card .professional p {
+        flex-basis: 100%;
+    }
+
+    .card .professional p:nth-child(3) {
+        display: none;
+    }
+
+    .card .social-media {
+        display: flex;
+        width: 150px;
+        justify-content: space-around;
+    }
+
+    .card .net{
+        width: 50px;
+        height: 50px;
+        margin: 0; 
+    }
+    
+
+}
+
 
 

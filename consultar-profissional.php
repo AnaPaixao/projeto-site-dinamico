@@ -50,13 +50,17 @@
         <div class="professional">
             <p>Matheus dos Santos Caldeira</p>
             <p>Desing Gráfico</p>
-            <p>Trabalho a mais de 10 anos na área de design já trabalhei para empresas como coca cola e pirelles, sou especialidade dendiediendineidneindei</p>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+            </p>
         </div>
+        <div class="social-media">
         <div class="net whatss">
             <a href=""><img src="./img/icon/icon-whatsapp.svg" alt=""></a>
         </div>
         <div class="net email">
             <a href=""><img src="./img/icon/icon-email.svg" alt=""></a>
+        </div>
         </div>
     </div>
 </body>
