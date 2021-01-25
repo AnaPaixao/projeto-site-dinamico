@@ -18,6 +18,7 @@
 
 <body>
     <header>
+        <a href="./index.php" class="botao-voltar"><img src="./img/arrow.svg" alt="botão voltar"></a>
         <div class="header-content">
             <h1>Escolha o melhor profissonal para o serviço que você deseja</h1>
         </div>

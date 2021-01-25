@@ -184,6 +184,7 @@ if (!empty($dados)) {
 
 <body>
     <header>
+        <a href="./index.php" class="botao-voltar"><img src="./img/arrow.svg" alt="botão voltar"></a>
         <div class="header-content">
             <h1>Obrigado por escolher nossa plataforma para divulgar seu trabalho</h1>
             <p>Preencha o formulário para se cadastrar na plataforma</p>

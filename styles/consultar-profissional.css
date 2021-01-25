@@ -4,6 +4,12 @@ header {
     width: 100%;
 }
 
+body header a.botao-voltar{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+
 .header-content {
     width: 700px;
     margin: 0 auto;

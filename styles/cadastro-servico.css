@@ -9,6 +9,12 @@ header {
     background: #9C88AC;
 }
 
+body header a.botao-voltar{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+
 .header-content {
     width: 77%;
     margin: 0 auto;

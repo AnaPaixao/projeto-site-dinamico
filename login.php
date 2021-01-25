@@ -123,7 +123,9 @@ if (!empty($_POST)) {
     </head>
 
     <body>
+        
         <main class="form-container">
+            <a href="./index.php" class="botao-voltar"><img src="./img/arrow.svg" alt="botão voltar"></a>
             <h1>Login</h1>
             <h2>Preencha os campos com os mesmos dados do seu cadastro</h2>
 
@@ -143,7 +145,7 @@ if (!empty($_POST)) {
                 <button>Log in</button>
             </form>
 
-            <p>Não tem uma conta ainda ? <a href="./cadastro-servico.php">Cadastre-se</a></p>
+            <p>Não tem uma conta ainda ?<a href="./cadastro-servico.php"> Cadastre-se</a></p>
         </main>
     </body>
 
