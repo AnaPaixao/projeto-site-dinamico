@@ -344,6 +344,32 @@ if (!empty($_SESSION['usuario']->especialidade_id)) {
             <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
         </div>
     </form>
+</div>
+
+<div class="container-form">
+    <form class="container w-75 mb-4">
+        <h1 class="my-4 h4 text-center">Alterar Senha</h1>
+
+        <div class="form-group row">
+            <label for="senha_antiga">Senha Atual</label>
+            <input type="text" name="senha_antiga" id="senha_antiga" class="form-control">
+        </div>
+        
+
+        <div class="form-group row">
+            <label for="descricao">Nova Senha</label>
+            <input type="text" name="nova_senha" id="nova_senha" class="form-control">
+        </div>
+
+        <div class="form-group row">
+            <label for="descricao">Confirmar Nova Senha</label>
+            <input type="text" name="confirmar_senha" id="confirmar_senha" class="form-control">
+        </div>
+
+        <div class="botoes">
+            <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
+        </div>
+    </form>
 
     <a href="./logout.php" class="mt-4 btn btn-block btn-danger">Sair</a>
 </div>
