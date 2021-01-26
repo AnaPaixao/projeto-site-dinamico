@@ -160,7 +160,7 @@ if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['nome'])) {
 $profissao = $db->query("SELECT * FROM profissao WHERE id = {$_SESSION['usuario']->profissao_id}")->fetch();
 $profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll();
 
-var_dump($profissao);
+// var_dump($profissao);
 ?>
 
 <!DOCTYPE html>
@@ -197,6 +197,7 @@ var_dump($profissao);
 
     <body>
         <header>
+            <a href="./index.php" class="botao-voltar"><img src="./img/arrow.svg" alt="botão voltar"></a>
             <div class="header-content">
                 <h1>Mantenha seus dados sempre atualizados</h1>
             </div>

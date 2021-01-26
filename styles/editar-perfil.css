@@ -1,9 +1,16 @@
 header {
+    width: 100%;
     padding: 30px;
 }
 
+body header a.botao-voltar{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+
 .header-content {
-    width: 900px;
+    width: 77%;
     margin: 0 auto;
     padding: 20px 0 20px 0;
 }
@@ -12,4 +19,21 @@ header {
     width: 400px;
     font-size: 25px;
     font-weight: 700;
+}
+
+@media (max-width: 540px){
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 15px 15px 15px;
+    }
+
+    .header-content h1 {
+        width: 290px;
+        font-size: 20px;
+    }
+
 }
