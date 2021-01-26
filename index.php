@@ -1,5 +1,11 @@
 <?php 
 session_start();
+
+require __DIR__."/DB/Connect.php";
+$db = Connect::getInstance();
+
+$profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll();
+// var_dump($profissoes[1]->id);
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +38,7 @@ session_start();
 
         <ul>
             <?= isset($_SESSION['usuario']) ? "" : "<li><a href='./cadastro-servico.php'>Cadastre-se</a></li>"?>
-            <li><a href="./login.php"><?= !isset($_SESSION['usuario']) ? "Login" : "Minha conta" ?></a></li>
+            <li><a href="./login.php" class='border-left'><?= !isset($_SESSION['usuario']) ? "Login" : "Minha conta" ?></a></li>
         </ul>
 
         <div class="intro-text">
@@ -49,8 +55,12 @@ session_start();
         <form action="consultar-profissional.php" class="search-container">
 
             <select name="occupation" id="occupation">
-                <option value="">Profissão</option>
-                <option value="">Cozinheiro</option>
+                <option value="">Escolha uma profissão</option>
+                <?php
+                foreach ($profissoes as $profissao): ?>
+                    <option value="<?= $profissao->id ?>"><?= $profissao->nome ?></option>
+                <?php
+                endforeach; ?>
             </select>
 
             <input type="text" name="cep" placeholder="CEP">

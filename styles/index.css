@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+.border-left {
+    border-left: 1px black solid;
+    padding-left: 10px;
+}
+
 body {
     min-height: 100vh;
     background: rgb(156,136,172);
@@ -36,11 +41,6 @@ main ul {
 
 main ul li {
     margin-left: 10px;
-}
-
-main ul li:nth-child(2) {
-    border-left: 1px black solid;
-    padding-left: 10px;
 }
 
 main ul li a {

@@ -170,14 +170,6 @@ if (!empty($dados)) {
     <link rel="stylesheet" href="./styles/cadastro-servico.css" />
     <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.mask.min.js"></script>
-    <style>
-        .botoes {
-            width: fit-content;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%)
-        }
-    </style>
 
     <title>Empresa - Cadastro Serviço</title>
 </head>

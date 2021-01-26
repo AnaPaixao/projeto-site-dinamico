@@ -63,6 +63,13 @@ body header a.botao-voltar{
     margin: 5px;
 }
 
+.botoes {
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
 
 @media (max-width: 540px){
 
