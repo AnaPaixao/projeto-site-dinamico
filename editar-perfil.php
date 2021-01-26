@@ -12,8 +12,6 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 /** [FIM DA VERIFICAÇÃO DE LOGIN] */
-
-
 require __DIR__ . "/DB/Connect.php";
 
 /** @var $db PDO */
@@ -21,7 +19,6 @@ $db = Connect::getInstance();
 
 
 /** VALIDAÇÕES */
-
 //Formulário dados
 if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['nome'])) {
     $dados = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED);
@@ -54,7 +51,6 @@ if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['nome'])) {
             if (empty($dados['profissao'])) {
                 $erros['profissao'] = true;
             }
-
         } else {
 
             // Valida Email
@@ -142,28 +138,21 @@ if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['nome'])) {
                                     $telefone = $query->fetch();
 
                                     $_SESSION['usuario']->telefone = $telefone;
-                                    $_SESSION['usuario']->telefone->numero = str_replace("-", "",
-                                        $_SESSION['usuario']->telefone->numero);
+                                    $_SESSION['usuario']->telefone->numero = str_replace("-", "", $_SESSION['usuario']->telefone->numero);
                                     $_SESSION['usuario']->cep = str_replace("-", "", $_SESSION['usuario']->cep);
-
                                 } catch (Exception $ex) {
                                     die("Erro: {$ex}");
                                 }
-
                             }
                         }
                     }
-
                 } catch
                 (PDOException $e) {
                     die($e->getMessage());
                 }
-
             }
-
         }
     }
-
 }
 
 
@@ -172,207 +161,247 @@ $profissao = $db->query("SELECT * FROM profissao WHERE id = {$_SESSION['usuario'
 $profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll();
 
 var_dump($profissao);
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Font-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Font-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link
             href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;1,700&family=Poppins:wght@400;600&display=swap"
             rel="stylesheet">
 
-    <!--CSS-->
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles/index.css"/>
-    <link rel="stylesheet" href="./styles/cadastro-servico.css"/>
-    <link rel="stylesheet" href="./styles/editar-perfil.css"/>
-    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mask.min.js"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="./styles/index.css"/>
+        <link rel="stylesheet" href="./styles/cadastro-servico.css"/>
+        <link rel="stylesheet" href="./styles/editar-perfil.css"/>
+        <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.min.js"></script>
 
-    <style>
-        .botoes {
-            width: fit-content;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%)
-        }
-    </style>
+        <style>
+            .botoes {
+                width: fit-content;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%)
+            }
+        </style>
 
-    <title>Empresa - Editar Perfil</title>
-</head>
+        <title>Empresa - Editar Perfil</title>
+    </head>
 
-<body>
-<header>
-    <div class="header-content">
-        <h1>Mantenha seus dados sempre atualizados</h1>
-    </div>
-</header>
-<div class="container-form">
-    <form name="dados_pessoais" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="container w-75 mb-4">
-        <h1 class="my-4 h4 text-center">Dados Pessoais</h1>
-
-        <div class="form-group row">
-            <div class="col-md-5 p-0">
-                <label for="nome">Nome <sup class="text-danger">*</sup></label>
-                <input type="text" name="nome" id="nome"
-                       value="<?= !isset($dados) ? $_SESSION['usuario']->nome : $dados['nome'] ?>" placeholder=""
-                       class="form-control <?= isset($erros['nome']) ? "border-danger" : "" ?> ">
-                <?= isset($erros['nome']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o nome!</p>" : "" ?>
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>Mantenha seus dados sempre atualizados</h1>
             </div>
+        </header>
+        <div class="container-form">
+            <form name="dados_pessoais" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="container w-75 mb-4">
+                <h1 class="my-4 h4 text-center">Dados Pessoais</h1>
 
-            <div class="offset-md-1 col-md-6 p-0 mt-3 mt-md-0">
-                <label for="sobrenome">Sobrenome <sup class="text-danger">*</sup></label>
-                <input type="text" name="sobrenome" id="sobrenome"
-                       value="<?= !isset($dados) ? $_SESSION['usuario']->sobrenome : $dados['sobrenome'] ?>"
-                       placeholder=""
-                       class="form-control <?= isset($erros['sobrenome']) ? "border-danger" : "" ?> ">
-                <?= isset($erros['sobrenome']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o sobrenome!</p>" : "" ?>
-            </div>
-        </div>
+                <div class="form-group row">
+                    <div class="col-md-5 p-0">
+                        <label for="nome">Nome <sup class="text-danger">*</sup></label>
+                        <input type="text" name="nome" id="nome"
+                               value="<?= !isset($dados) ? $_SESSION['usuario']->nome : $dados['nome'] ?>" placeholder=""
+                               class="form-control <?= isset($erros['nome']) ? "border-danger" : "" ?> ">
+                               <?= isset($erros['nome']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o nome!</p>" : "" ?>
+                    </div>
 
-        <div class="form-group row">
-            <label for="email">E-mail <sup class="text-danger">*</sup></label>
-            <input type="text" name="email" id="email"
-                   value="<?= !isset($dados) ? $_SESSION['usuario']->email : $dados['email'] ?>" placeholder=""
-                   class="form-control <?= (isset($erros['email']) or isset($erros['email_invalido']) or isset($erros['email_existente'])) ? "border-danger" : "" ?>">
-            <div>
-                <?= isset($erros['email']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o e-mail!</p>" : "" ?>
-                <?= isset($erros['email_invalido']) ? "<p class='mt-1 mb-0 text-danger'>O Email informado não é válido!</p>" : "" ?>
-                <?= isset($erros['email_existente']) ? "<p class='mt-1 mb-0 text-danger'>O Email informado já está cadastrado!</p>" : "" ?>
-            </div>
-
-        </div>
-        <div class="form-group row">
-            <div class="col-md-5 p-0">
-                <label for="telefone">Whatsapp <sup class="text-danger">*</sup></label><br>
-                <input type="text" name="telefone" id="telefone"
-                       value="<?= $_SESSION['usuario']->telefone->ddd . $_SESSION['usuario']->telefone->numero ?>"
-                       placeholder="(00) 00000-0000"
-                       class="form-control <?= (isset($erros['telefone']) or isset($erros['telefone_invalido'])) ? "border-danger" : "" ?>"
-                       pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(99) 99999-9999">
-                <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
-                <div>
-                    <?= isset($erros['telefone']) ? "<p class='mt-1 mb-0 text-danger'>Whatsapp é necessário!</p>" : "" ?>
-                    <?= isset($erros['telefone_invalido']) ? "<p class='mt-1 mb-0 text-danger'>É necessário que o formato do telefone seja: (99) 99999-9999</p>" : "" ?>
+                    <div class="offset-md-1 col-md-6 p-0 mt-3 mt-md-0">
+                        <label for="sobrenome">Sobrenome <sup class="text-danger">*</sup></label>
+                        <input type="text" name="sobrenome" id="sobrenome"
+                               value="<?= !isset($dados) ? $_SESSION['usuario']->sobrenome : $dados['sobrenome'] ?>"
+                               placeholder=""
+                               class="form-control <?= isset($erros['sobrenome']) ? "border-danger" : "" ?> ">
+                               <?= isset($erros['sobrenome']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o sobrenome!</p>" : "" ?>
+                    </div>
                 </div>
 
-            </div>
+                <div class="form-group row">
+                    <label for="email">E-mail <sup class="text-danger">*</sup></label>
+                    <input type="text" name="email" id="email"
+                           value="<?= !isset($dados) ? $_SESSION['usuario']->email : $dados['email'] ?>" placeholder=""
+                           class="form-control <?= (isset($erros['email']) or isset($erros['email_invalido']) or isset($erros['email_existente'])) ? "border-danger" : "" ?>">
+                    <div>
+                        <?= isset($erros['email']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o e-mail!</p>" : "" ?>
+                        <?= isset($erros['email_invalido']) ? "<p class='mt-1 mb-0 text-danger'>O Email informado não é válido!</p>" : "" ?>
+                        <?= isset($erros['email_existente']) ? "<p class='mt-1 mb-0 text-danger'>O Email informado já está cadastrado!</p>" : "" ?>
+                    </div>
 
-            <div class="offset-md-1 col-md-6 p-0 mt-3 mt-md-0">
-                <label for="cep">CEP <sup class="text-danger">*</sup></label><br>
-                <input type="text" name="cep" id="cep"
-                       value="<?= !isset($dados) ? $_SESSION['usuario']->cep : $dados['cep'] ?>" placeholder="00000-000"
-                       class="form-control <?= (isset($erros['cep']) or isset($erros['cep_formato'])) ? "border-danger" : "" ?>"
-                       pattern="[0-9]{5}-[0-9]{3}" title="99999-999">
-                <script type="text/javascript">$("#cep").mask("00000-000");</script>
-                <div>
-                    <?= isset($erros['cep']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o CEP!</p>" : "" ?>
-                    <?= isset($erros['cep_formato']) ? "<p class='mt-1 mb-0 text-danger'>É necessário que o formato do CEP seja: 99999-999</p>" : "" ?>
-                    <?= isset($erros['cep_invalido']) ? "<p class='mt-1 mb-0 text-danger'>O CEP Informado não é um CEP válido</p>" : "" ?>
                 </div>
-            </div>
+                <div class="form-group row">
+                    <div class="col-md-5 p-0">
+                        <label for="telefone">Whatsapp <sup class="text-danger">*</sup></label><br>
+                        <input type="text" name="telefone" id="telefone"
+                               value="<?= $_SESSION['usuario']->telefone->ddd . $_SESSION['usuario']->telefone->numero ?>"
+                               placeholder="(00) 00000-0000"
+                               class="form-control <?= (isset($erros['telefone']) or isset($erros['telefone_invalido'])) ? "border-danger" : "" ?>"
+                               pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(99) 99999-9999">
+                        <script type="text/javascript">$("#telefone").mask("(00) 00000-0009");</script>
+                        <div>
+                            <?= isset($erros['telefone']) ? "<p class='mt-1 mb-0 text-danger'>Whatsapp é necessário!</p>" : "" ?>
+                            <?= isset($erros['telefone_invalido']) ? "<p class='mt-1 mb-0 text-danger'>É necessário que o formato do telefone seja: (99) 99999-9999</p>" : "" ?>
+                        </div>
+
+                    </div>
+
+                    <div class="offset-md-1 col-md-6 p-0 mt-3 mt-md-0">
+                        <label for="cep">CEP <sup class="text-danger">*</sup></label><br>
+                        <input type="text" name="cep" id="cep"
+                               value="<?= !isset($dados) ? $_SESSION['usuario']->cep : $dados['cep'] ?>" placeholder="00000-000"
+                               class="form-control <?= (isset($erros['cep']) or isset($erros['cep_formato'])) ? "border-danger" : "" ?>"
+                               pattern="[0-9]{5}-[0-9]{3}" title="99999-999">
+                        <script type="text/javascript">$("#cep").mask("00000-000");</script>
+                        <div>
+                            <?= isset($erros['cep']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar o CEP!</p>" : "" ?>
+                            <?= isset($erros['cep_formato']) ? "<p class='mt-1 mb-0 text-danger'>É necessário que o formato do CEP seja: 99999-999</p>" : "" ?>
+                            <?= isset($erros['cep_invalido']) ? "<p class='mt-1 mb-0 text-danger'>O CEP Informado não é um CEP válido</p>" : "" ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="profissao">Profissão <sup class="text-danger">*</sup></label>
+                    <select class="form-control <?= isset($erros['profissao']) ? "border-danger" : "" ?>" name="profissao"
+                            id="profissao">
+                        <option value="<?= $_SESSION['usuario']->profissao_id ?>"><?= $profissao->nome ?></option>
+                        <?php foreach ($profissoes as $profissao_opcao): ?>
+                            <?php
+                            if ($profissao_opcao->nome == $profissao->nome): continue;
+                            endif;
+                            ?>
+                            <option value="<?= $profissao_opcao->id ?>"><?= $profissao_opcao->nome ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= isset($erros['profissao']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar a profissão!</p>" : "" ?>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" class="btn btn-primary mt-4">Atualizar</button>
+                    <a href="<?= $_SERVER['PHP_SELF'] ?>">
+                        <button type="button" class="btn btn-primary mt-4">Reload</button>
+                    </a>
+                </div>
+            </form>
         </div>
-        <div class="form-group row">
-            <label for="profissao">Profissão <sup class="text-danger">*</sup></label>
-            <select class="form-control <?= isset($erros['profissao']) ? "border-danger" : "" ?>" name="profissao"
-                    id="profissao">
-                <option value="<?= $_SESSION['usuario']->profissao_id ?>"><?= $profissao->nome ?></option>
-                <?php foreach ($profissoes as $profissao_opcao): ?>
-                    <?php if ($profissao_opcao->nome == $profissao->nome): continue; endif; ?>
-                    <option value="<?= $profissao_opcao->id ?>"><?= $profissao_opcao->nome ?></option>
-                <?php endforeach; ?>
-            </select>
-            <?= isset($erros['profissao']) ? "<p class='mt-1 mb-0 text-danger'>É necessário informar a profissão!</p>" : "" ?>
-        </div>
-
-        <div class="botoes">
-            <button type="submit" class="btn btn-primary mt-4">Atualizar</button>
-            <a href="<?= $_SERVER['PHP_SELF'] ?>">
-                <button type="button" class="btn btn-primary mt-4">Reload</button>
-            </a>
-        </div>
-    </form>
-</div>
 
 
-<?php
-
+        <?php
 //Formulário dados
-if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['especialidade'])) {
-    $dados = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED);
-}
-
-$especialidades = $db->query("SELECT * FROM especialidade WHERE profissao_id = {$_SESSION['usuario']->profissao_id}")->fetchAll();
-if (!empty($_SESSION['usuario']->especialidade_id)) {
-    $usuario_especialidade = $db->query("SELECT * FROM especialidade WHERE id = {$_SESSION['usuario']->especialidade_id}")->fetch();
-}
-
-?>
+        if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['especialidade'])) {
+            $dados = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED);
 
 
-<div class="container-form">
-    <form name="dados_profissionais" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="container w-75 mb-4">
-        <h1 class="my-4 h4 text-center">Dados Complementares</h1>
+            try {
+                if (!empty($dados['especialidade'])) {
+                    $stmt = $db->prepare("UPDATE profissional SET especialidade_id=:especialidade_id WHERE id = :id");
+                    $stmt->bindParam(":especialidade_id", $dados['especialidade']);
+                    $stmt->bindParam(":id", $_SESSION['usuario']->id, PDO::PARAM_INT);
+                    $stmt->execute();
+                }
 
-        <div class="form-group row">
-            <div class="col-md-5 p-0">
-                <label for="especialidade">Especialidade</label>
-                <select class="form-control" name="especialidade" id="especialidade">
-                    <option value="<?= (isset($usuario_especialidade)) and (!empty($usuario_especialidade->id)) ? $usuario_especialidade->id : "" ?>">
-                        <?= (!empty($usuario_especialidade->nome)) ? $usuario_especialidade->nome : "Escolha uma Especialidade" ?>
-                    </option>
-                    <?php foreach ($especialidades as $especialidade): ?>
-                        <?php if (isset($usuario_especialidade->nome) && $usuario_especialidade->nome == $especialidade->nome): continue; endif; ?>
-                        <option value="<?= $especialidade->id ?>"><?= $especialidade->nome ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+                $stmt = $db->prepare("UPDATE profissional SET descricao=:descricao WHERE id = :id");
+                $stmt->bindParam(":descricao", $dados['descricao']);
+                $stmt->bindParam(":id", $_SESSION['usuario']->id);
+                $stmt->execute();
+
+                $novosDados = $db->query("SELECT especialidade_id, descricao FROM profissional WHERE id = " . $_SESSION['usuario']->id)->fetch();
+                $_SESSION['usuario']->especialidade_id = $novosDados->especialidade_id;
+                $_SESSION['usuario']->descricao = $novosDados->descricao;
+            } catch (Exception $ex) {
+                die("Erro: " . $ex);
+            }
+        }
+
+
+
+        $especialidades = $db->query("SELECT * FROM especialidade WHERE profissao_id = {$_SESSION['usuario']->profissao_id}")->fetchAll();
+        if (!empty($_SESSION['usuario']->especialidade_id)) {
+            $usuario_especialidade = $db->query("SELECT * FROM especialidade WHERE id = {$_SESSION['usuario']->especialidade_id}")->fetch();
+        }
+        ?>
+
+
+
+
+        <div class="container-form">
+            <form name="dados_profissionais" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="container w-75 mb-4">
+                <h1 class="my-4 h4 text-center">Dados Complementares</h1>
+
+                <div class="form-group row">
+                    <div class="col-md-5 p-0">
+                        <label for="especialidade">Especialidade</label>
+                        <select class="form-control" name="especialidade" id="especialidade">
+                            <option value="<?= (isset($usuario_especialidade)) and ( !empty($usuario_especialidade->id)) ? $usuario_especialidade->id : "" ?>">
+                                <?= (!empty($usuario_especialidade->nome)) ? $usuario_especialidade->nome : "Escolha uma Especialidade" ?>
+                            </option>
+                            <?php foreach ($especialidades as $especialidade): ?>
+                                <?php
+                                if (isset($usuario_especialidade->nome) && $usuario_especialidade->nome == $especialidade->nome): continue;
+                                endif;
+                                ?>
+                                <option value="<?= $especialidade->id ?>"><?= $especialidade->nome ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" name="descricao" id="descricao" rows="3"><?= !empty($_SESSION['usuario']->descricao) ? $_SESSION['usuario']->descricao : "" ?></textarea>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
+                </div>
+            </form>
         </div>
 
-        <div class="form-group row">
-            <label for="descricao">Descrição</label>
-            <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+
+
+
+        <?php
+        if (isset(filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED)['senha_antiga'])) {
+            $dados = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED);
+            var_dump($dados);
+        }
+        ?>
+
+
+
+        <div class="container-form">
+            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="container w-75 mb-4">
+                <h1 class="my-4 h4 text-center">Alterar Senha</h1>
+
+                <div class="form-group row">
+                    <label for="senha_antiga">Senha Atual</label>
+                    <input type="text" name="senha_antiga" id="senha_antiga" class="form-control">
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="descricao">Nova Senha</label>
+                    <input type="text" name="nova_senha" id="nova_senha" class="form-control">
+                </div>
+
+                <div class="form-group row">
+                    <label for="descricao">Confirmar Nova Senha</label>
+                    <input type="text" name="confirmar_senha" id="confirmar_senha" class="form-control">
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
+                </div>
+            </form>
+
+            <a href="./logout.php" class="mt-4 btn btn-block btn-danger">Sair</a>
         </div>
-
-        <div class="botoes">
-            <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
-        </div>
-    </form>
-</div>
-
-<div class="container-form">
-    <form class="container w-75 mb-4">
-        <h1 class="my-4 h4 text-center">Alterar Senha</h1>
-
-        <div class="form-group row">
-            <label for="senha_antiga">Senha Atual</label>
-            <input type="text" name="senha_antiga" id="senha_antiga" class="form-control">
-        </div>
-        
-
-        <div class="form-group row">
-            <label for="descricao">Nova Senha</label>
-            <input type="text" name="nova_senha" id="nova_senha" class="form-control">
-        </div>
-
-        <div class="form-group row">
-            <label for="descricao">Confirmar Nova Senha</label>
-            <input type="text" name="confirmar_senha" id="confirmar_senha" class="form-control">
-        </div>
-
-        <div class="botoes">
-            <button type="submit" class="btn btn-primary mt-4 mb-4">Atualizar</button>
-        </div>
-    </form>
-
-    <a href="./logout.php" class="mt-4 btn btn-block btn-danger">Sair</a>
-</div>
-</body>
+    </body>
 
 </html>
