@@ -8,7 +8,7 @@ $profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll(
 $consulta = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRIPPED);
 
 if(isset($consulta)){
-    var_dump($consulta);
+    // var_dump($consulta);
     
     if($consulta['profissao']){
         
@@ -18,14 +18,14 @@ if(isset($consulta)){
             $stmt->execute();
             
             $especialidades = $stmt->fetchAll();
-            var_dump($especialidades);
+            // var_dump($especialidades);
             
             $stmt = $db->prepare("SELECT * FROM profissao WHERE id = :id");
             $stmt->bindParam(":id", $consulta['profissao'], PDO::PARAM_INT);
             $stmt->execute();
             
             $profissao_selecionada = $stmt->fetch();
-            var_dump($profissao_selecionada);
+            // var_dump($profissao_selecionada);
             
         } catch (Exception $ex) {
            echo "Deu erro tio: {$ex}";
@@ -94,8 +94,8 @@ if(isset($consulta)){
             <input type="text" name="cep" id="cep">
         </div>
         
-        <div class="cep">
-            <button type="submit">></button>
+        <div class="button">
+            <button type="submit">Enviar</button>
         </div>
     </form>
 

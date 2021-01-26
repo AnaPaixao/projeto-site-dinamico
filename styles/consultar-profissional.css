@@ -1,10 +1,11 @@
+/*======== HEADER ========*/
 header {
     background: #9C88AC;
     padding: 20px;
     width: 100%;
 }
 
-body header a.botao-voltar{
+header a.botao-voltar{
     position: absolute;
     top: 3%;
     left: 5%;
@@ -22,14 +23,31 @@ body header a.botao-voltar{
     font-weight: 700;
 }
 
+
+/*======== FORM ========*/
 form {
     font-family: 'Poppins', sans-serif;
+    width: 55vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+form label {
+    display: flex;
+}
+
+/* form {
+    font-family: 'Poppins', sans-serif;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-content: center;
-    gap: 40px;
-    width: 40vw;
+    gap: 20px;
+    width: 65vw;
     margin: 40px auto;
     font-size: 14px;
 }
@@ -43,7 +61,7 @@ form div {
 
 form label {
     align-self: flex-start;
-}
+} */
 
 form select {
     width: 200px;
@@ -65,6 +83,26 @@ form input {
     padding: 10px;
 }
 
+form button {
+    width: 100px;
+    height: 40px;
+    color: #FFF;
+    font-family: 'Archivo', sans-serif;
+    font-size: 15px;
+    line-height: 26px;
+    outline: 0;
+    border: none;
+    border-radius: 8px;
+    background-color: #46144F;
+    /* box-shadow: 2px 2px black; */
+    margin-top: 20px;
+}
+
+form button:hover {
+    background-color: #6b3076;
+}
+
+/*======== CARD ========*/
 .card {
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -138,7 +176,9 @@ form input {
     margin: 10px;
 }
 
-@media (max-width: 1000px) {
+/*======== 1125px ========*/
+
+@media (max-width: 1125px) {
 
     header {
         padding: 10px;
@@ -155,13 +195,18 @@ form input {
     }
 
     form {
-        display: grid;
-        grid-template-columns: none;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 20px;
-        width: 90vw;
-        margin: 20px auto;
+        font-family: 'Poppins', sans-serif;
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 40px;
+        flex-wrap: wrap;
     }
+
+    form label {
+        margin-top: 10px;    }
 
     form select, form input {
         width: 400px;
@@ -211,11 +256,9 @@ form input {
 
 }
 
-@media (max-width: 700px) {
+/*======== 700px ========*/
 
-    header {
-        padding: 10px;
-    }
+@media (max-width: 700px) {
 
     .header-content {
         width: 290px;
@@ -224,89 +267,35 @@ form input {
     .header-content h1 {
         width: 280px;
         font-size: 20px;
-        text-align: center;
     }
 
     form {
-        display: grid;
-        grid-template-columns: none;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 20px;
+        flex-direction: column;
         width: 90vw;
-        margin: 20px auto;
+        padding: 20px;
     }
 
     form select, form input {
         width: 300px;
     }
-
-    .card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 300px;
-        height: 400px;
-    }
-
-    .card .img {
-        display: flex;
-        width: 150px;
-    }
-
-    .card .professional {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        text-align: center;
-        width: 200px;
-    }
-
-    .card .professional p {
-        flex-basis: 100%;
-    }
-
-    .card .professional p:nth-child(3) {
-        display: none;
-    }
-
-    .card .social-media {
-        display: flex;
-        width: 150px;
-        justify-content: space-around;
-    }
-
-    .card .net{
-        width: 50px;
-        height: 50px;
-        margin: 0; 
-    }
-    
-
 }
+
+/*======== 414px ========*/
 
 @media (max-width: 414px) {
 
-    header {
-        padding: 10px;
-    }
-
-    .header-content {
-        width: 290px;
+    body header a.botao-voltar{
+        top: 1%;
     }
 
     .header-content h1 {
-        width: 280px;
         font-size: 18px;
-        text-align: center;
     }
 
     form {
-        display: grid;
-        grid-template-columns: none;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 20px;
-        width: 90vw;
+        width: 80vw;
         margin: 20px auto;
+        padding: 0;
     }
 
     form select, form input {
@@ -314,47 +303,8 @@ form input {
     }
 
     .card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         width: 250px;
-        height: 400px;
     }
-
-    .card .img {
-        display: flex;
-        width: 150px;
-    }
-
-    .card .professional {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        text-align: center;
-        width: 200px;
-    }
-
-    .card .professional p {
-        flex-basis: 100%;
-    }
-
-    .card .professional p:nth-child(3) {
-        display: none;
-    }
-
-    .card .social-media {
-        display: flex;
-        width: 150px;
-        justify-content: space-around;
-    }
-
-    .card .net{
-        width: 50px;
-        height: 50px;
-        margin: 0; 
-    }
-    
-
 }
 
 
