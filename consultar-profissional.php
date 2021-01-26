@@ -1,3 +1,39 @@
+<?php
+require __DIR__."/DB/Connect.php";
+$db = Connect::getInstance();
+
+$profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll();
+
+
+$consulta = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRIPPED);
+
+if(isset($consulta)){
+    var_dump($consulta);
+    
+    if($consulta['profissao']){
+        
+        try {
+            $stmt = $db->prepare("SELECT * FROM especialidade WHERE profissao_id = :id");
+            $stmt->bindParam(":id", $consulta['profissao'], PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $especialidades = $stmt->fetchAll();
+            var_dump($especialidades);
+            
+            $stmt = $db->prepare("SELECT * FROM profissao WHERE id = :id");
+            $stmt->bindParam(":id", $consulta['profissao'], PDO::PARAM_INT);
+            $stmt->execute();
+            
+            $profissao_selecionada = $stmt->fetch();
+            var_dump($profissao_selecionada);
+            
+        } catch (Exception $ex) {
+           echo "Deu erro tio: {$ex}";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,24 +59,43 @@
             <h1>Escolha o melhor profissonal para o serviço que você deseja</h1>
         </div>
     </header>
-    <form>
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" post="get">
         <div class="occupation">
-            <label for="occupation">Profissão</label>
-            <select name="occupation" id="occupation">
-                <option value=""></option>
+            <label for="profissao">Profissão</label>
+            <select name="profissao" id="occupation" onchange="this.form.submit()">
+                
+                <?php if(!isset($profissao_selecionada)): ?>
+                    <option value="">Selecione uma Profissão</option>
+                <?php else: ?>
+                    <option value="<?= $profissao_selecionada->id ?>"><?= $profissao_selecionada->nome ?></option>
+                <?php endif; ?>
+                <?php foreach($profissoes as $profissao): ?>
+                    <option value="<?= $profissao->id ?>"><?= $profissao->nome ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 
         <div class="specialism">
-            <label for="specialism" class="specialism">Especialidade</label>
-            <select name="specialism" id="specialism">
-                <option value=""></option>
+            <label for="especialidade" class="specialism">Especialidade</label>
+            <select name="especialidade" id="specialism">
+                <?php if(!isset($especialidades)): ?>
+                    <option value="">Selecione uma profissão ANTES CARALHO</option>
+                <?php else: ?>
+                    <option value="">Selecione uma especialidade</option>
+                    <?php foreach($especialidades as $especialidade): ?>
+                    <option value="<?= $especialidade->id ?>"><?= $especialidade->nome ?></option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </select>
         </div>
 
         <div class="cep">
             <label for="cep" class="cep">CEP</label>
             <input type="text" name="cep" id="cep">
+        </div>
+        
+        <div class="cep">
+            <button type="submit">></button>
         </div>
     </form>
 
