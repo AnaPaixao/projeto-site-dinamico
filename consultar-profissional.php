@@ -152,9 +152,9 @@ if (isset($consulta)) {
                                 <option value="<?= $especialidade->id ?>"><?= $especialidade->nome ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
-                                <?php if(isset($especialidade_selecionada)): ?>
-                                <option value="">Todos</option>
-                                <?php endif; ?>
+                        <?php if (isset($especialidade_selecionada)): ?>
+                            <option value="">Todos</option>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </select>
             </div>
@@ -170,24 +170,28 @@ if (isset($consulta)) {
             </div>
         </form>
 
-        
+
         <?php if (!isset($erros)): ?>
-            <?php if (isset($profissionais)): ?>
+            <?php if (isset($profissionais) && !empty($profissionais)): ?>
                 <?php foreach ($profissionais as $profissional): ?>
-        
-                <?php $tel = $db->query("SELECT * FROM telefone WHERE profissional_id = ".$profissional->id)->fetch();?>
-                <?php $prof = $db->query("SELECT * FROM profissao WHERE id = ".$profissional->profissao_id)->fetch();?>
-                <?php if(!empty($profissional->especialidade_id)){ $esp = $db->query("SELECT * FROM especialidade WHERE id = " . $profissional->especialidade_id)->fetch();} else {$esp=null;}?>
-                
+
+                    <?php $tel = $db->query("SELECT * FROM telefone WHERE profissional_id = " . $profissional->id)->fetch(); ?>
+                    <?php $prof = $db->query("SELECT * FROM profissao WHERE id = " . $profissional->profissao_id)->fetch(); ?>
+                    <?php if (!empty($profissional->especialidade_id)) {
+                        $esp = $db->query("SELECT * FROM especialidade WHERE id = " . $profissional->especialidade_id)->fetch();
+                    } else {
+                        $esp = null;
+                    } ?>
+
                     <div class="card">
                         <div class="img">
                             <img src="./img/icon/<?= $prof->icone ?>" width="100" height="100" alt="">
                         </div>
                         <div class="professional">
                             <p><?= $profissional->nome ?></p>
-                            <p><?= (isset($esp->nome) and !empty($esp->nome)) ? $esp->nome : "Sem especialidade" ?></p>
+                            <p><?= (isset($esp->nome) and ! empty($esp->nome)) ? $esp->nome : "Sem especialidade" ?></p>
                             <p>
-                                 <?= $profissional->descricao ?>
+            <?= $profissional->descricao ?>
                             </p>
                         </div>
                         <div class="social-media">
@@ -200,17 +204,21 @@ if (isset($consulta)) {
                         </div>
                     </div>
                 <?php endforeach; ?>
+            <?php elseif (!is_null($consulta) && !empty($consulta['cep']) && !empty($consulta['profissao']) && empty($profissionais)): ?>
+                <div class="card">
+                    <h2>Nenhum profissional cadastrado no seu bairro com essas informações.</h2>
+                </div>
             <?php else: ?>
                 <div class="card">
-                    <h1>Os resultados irão aparecer aqui</h1>
+                    <h2>Os resultados irão aparecer aqui.</h2>
                 </div>
-            <?php endif; ?>
+    <?php endif; ?>
 
         <?php else: ?>
             <div class="card">
                 <h1>CEP INVÁLIDO</h1>
             </div>
-        <?php endif; ?>
+<?php endif; ?>
 
         <script>
             function submeterProfissao() {

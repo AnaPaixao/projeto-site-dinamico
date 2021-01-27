@@ -107,6 +107,7 @@ form button:hover {
     font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 730px;
     height: 200px;
     margin: 0 auto 10px auto;

@@ -35,7 +35,7 @@ $erro = false;
 
 
 // Para continuar mostrando o e-mail após uma tentativa de logar:
-if(isset($login['email'])){
+if (isset($login['email'])) {
     $email = $login['email'];
 }
 
@@ -123,7 +123,7 @@ if (!empty($_POST)) {
     </head>
 
     <body>
-        
+
         <main class="form-container">
             <a href="./index.php" class="botao-voltar"><img src="./img/arrow.svg" alt="botão voltar"></a>
             <h1>Login</h1>
@@ -136,12 +136,14 @@ if (!empty($_POST)) {
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password">
 
-<?= ($erro == true) ? "<p class='error-login'><strong>Usuário ou senha inválido</strong></p>" : "" ?>
-<?= isset($erros['email_invalido']) ? "<p class='error-login'><strong>O email inserido não é válido.</strong></p>" : "" ?>
-<?= isset($erros['email_vazio']) ? "<p class='error-login'><strong>Você deve preencher o email!</strong></p>" : "" ?>
-<?= isset($erros['senha_vazio']) ? "<p class='error-login'><strong>Você deve preencher a senha!</strong></p>" : "" ?>
-<?= isset($erros['faca_login']) ? "<p class='error-login'><strong>{$erros['faca_login']}</strong></p>" : "" ?>
-
+                <?= ($erro == true) ? "<p class='error-login'><strong>Usuário ou senha inválido</strong></p>" : "" ?>
+                <?= isset($erros['email_invalido']) ? "<p class='error-login'><strong>O email inserido não é válido.</strong></p>" : "" ?>
+                <?= isset($erros['email_vazio']) ? "<p class='error-login'><strong>Você deve preencher o email!</strong></p>" : "" ?>
+                <?= isset($erros['senha_vazio']) ? "<p class='error-login'><strong>Você deve preencher a senha!</strong></p>" : "" ?>
+                <?= isset($erros['faca_login']) ? "<p class='error-login'><strong>{$erros['faca_login']}</strong></p>" : "" ?>
+                <?php if (isset($_SESSION['cadastro_msg'])): ?>
+                    <p class='error-login'><strong><?= $_SESSION['cadastro_msg'] ?></strong></p>
+                <?php endif; unset($_SESSION['cadastro_msg']); ?>
                 <button>Log in</button>
             </form>
 

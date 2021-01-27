@@ -27,21 +27,19 @@ $profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll(
 
     <body>
 
-        <?php
-        if (isset($_SESSION['msg'])):
-            echo "<div class='alert'>{$_SESSION['msg']}</p>";
-            unset($_SESSION['msg']);
-        else:
-            echo "";
-        endif;
-        ?>
-
         <main id="container">
 
-            <ul>
-                <?= isset($_SESSION['usuario']) ? "" : "<li><a href='./cadastro-servico.php'>Cadastre-se</a></li>" ?>
-                <li><a href="./login.php" class='border-left'><?= !isset($_SESSION['usuario']) ? "Login" : "Minha conta" ?></a></li>
-            </ul>
+            <?php if (!isset($_SESSION['usuario'])): ?>
+                <ul>
+                    <li><a href='./cadastro-servico.php'>Cadastre-se</a></li>
+                    <li><a href="./login.php" class='border-left'>Login</a></li>
+                </ul>
+            <?php else: ?>
+                <ul>
+                    <li><a href="./login.php">Minha Conta</a></li>
+                    <li><a href='./logout.php' class='border-left'>Sair</a></li>
+                </ul>
+            <?php endif; ?>
 
             <div class="intro-text">
                 <h1>Achakí</h1>
@@ -56,14 +54,14 @@ $profissoes = $db->query("SELECT * FROM profissao ORDER BY nome ASC")->fetchAll(
 
             <form action="consultar-profissional.php" class="search-container" method="post">
 
-                <select name="profissao" id="occupation">
+                <select required name="profissao" id="occupation">
                     <option value="">Escolha uma profissão</option>
                     <?php foreach ($profissoes as $profissao): ?>
                         <option value="<?= $profissao->id ?>"><?= $profissao->nome ?></option>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
 
-                <input type="text" name="cep" id="cep" placeholder="CEP"  pattern="[0-9]{5}-[0-9]{3}" title="99999-999">
+                <input required class="index-input-cep" type="text" name="cep" id="cep" placeholder="CEP"  pattern="[0-9]{5}-[0-9]{3}" title="99999-999">
                 <script type="text/javascript">$("#cep").mask("00000-000");</script>
 
                 <button>Consultar</button>

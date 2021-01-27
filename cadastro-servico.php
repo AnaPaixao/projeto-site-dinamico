@@ -140,8 +140,8 @@ if (!empty($dados)) {
                 $stmt->bindParam(":ddd", $ddd);
                 $stmt->bindParam(":numero", $numero);
                 if($stmt->execute()){
-                    $_SESSION['msg'] = "Usuário inserido com sucesso!";
-                    header("Location: http://localhost/projeto-site-dinamico/");
+                    $_SESSION['cadastro_msg'] = "Cadastro efetuado, pode entrar com seus dados!";
+                    header("Location: http://localhost/projeto-site-dinamico/login.php");
                     exit;
                 }
             }

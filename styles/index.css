@@ -113,6 +113,10 @@ main form button:hover {
     background-color: #6b3076;
 }
 
+.index-input-cep::placeholder {
+  color: #fff;
+}
+
 /*MAIN ICON*/
 .icon {
     color: rgb(213, 213, 213);
