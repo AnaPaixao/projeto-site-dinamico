@@ -185,7 +185,7 @@ if (isset($consulta)) {
 
                     <div class="card">
                         <div class="img">
-                            <img src="./img/icon/<?= $prof->icone ?>" width="100" height="100" alt="">
+                            <img src="./img/profissao/<?= $prof->icone ?>" width="100" height="100" alt="">
                         </div>
                         <div class="professional">
                             <p><?= $profissional->nome ?></p>

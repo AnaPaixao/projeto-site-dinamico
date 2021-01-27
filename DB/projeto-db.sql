@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `projeto`
 --
-
+CREATE DATABASE IF NOT EXISTS `projeto` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
+USE `projeto`;
 -- --------------------------------------------------------
 
 --
@@ -117,26 +118,26 @@ CREATE TABLE `profissao` (
 --
 
 INSERT INTO `profissao` (`id`, `nome`, `icone`) VALUES
-(1, 'Médico(a)', 'icone-profissional.png'),
-(2, 'Pedreiro', 'icone-profissional.png'),
-(3, 'Computação', 'icone-profissional.png'),
-(4, 'Motorista', 'icone-profissional.png'),
-(5, 'Engenheiro(a)', 'icone-profissional.png'),
+(1, 'Médico(a)', 'icon-medico.svg'),
+(2, 'Pedreiro', 'icon-pedreiro.svg'),
+(3, 'Computação', 'icon-computacao.svg'),
+(4, 'Motorista', 'icon-motorista.svg'),
+(5, 'Engenheiro(a)', 'icon-engenheiro.svg'),
 (6, 'Técnico(a)', 'icone-profissional.png'),
-(7, 'Professor(a)', 'icone-profissional.png'),
-(8, 'Odontologia', 'icone-profissional.png'),
-(9, 'Fisoterapeuta', 'icone-profissional.png'),
-(10, 'Farmacia', 'icone-profissional.png'),
-(11, 'Advogado(a)', 'icone-profissional.png'),
-(12, 'Arquiteto', 'icone-profissional.png'),
-(13, 'Fotógrafo', 'icone-profissional.png'),
-(14, 'Pintor de Obras', 'icone-profissional.png'),
-(15, 'Psicólogo(a)', 'icone-profissional.png'),
+(7, 'Professor(a)', 'icon-professor.svg'),
+(8, 'Odontologia', 'icon-odontologia.svg'),
+(9, 'Fisoterapeuta', 'icon-fisioterapeuta.svg'),
+(10, 'Farmacia', 'icon-farmacia.svg'),
+(11, 'Advogado(a)', 'icon-advogado.svg'),
+(12, 'Arquiteto', 'icon-arquiteto.svg'),
+(13, 'Fotógrafo', 'icon-fotografo.svg'),
+(14, 'Pintor de Obras', 'icon-pintor-de-obras.svg'),
+(15, 'Psicólogo(a)', 'icon-psicologo.svg'),
 (16, 'Nutricionista', 'icone-profissional.png'),
-(17, 'Porteiro', 'icone-profissional.png'),
+(17, 'Porteiro', 'icon-porteiro.svg'),
 (18, 'Encanador', 'icone-profissional.png'),
-(19, 'Cozinheiro(a)', 'icone-profissional.png'),
-(20, 'Auxiliar de Limpeza', 'icone-profissional.png');
+(19, 'Cozinheiro(a)', 'icon-cozinheiro.svg'),
+(20, 'Auxiliar de Limpeza', 'icon-auxiliar-de-limpeza.svg');
 
 -- --------------------------------------------------------
 
